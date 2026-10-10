@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="CrowniX - luxury International Draughts. Free, offline, no account.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CrowniX">
+<title>CrowniX - Luxury International Checkers</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark" data-screen="menu">
+
+<!-- Crown gradients for the king piece (inline, local) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="crownW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#e3e6ea"/>
+      <stop offset="1" stop-color="#a9afb8"/>
+    </linearGradient>
+    <linearGradient id="gemW" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#b4bac2"/>
+    </linearGradient>
+    <linearGradient id="crownB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4c54"/>
+      <stop offset=".5" stop-color="#17181c"/>
+      <stop offset="1" stop-color="#030304"/>
+    </linearGradient>
+    <linearGradient id="gemB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5a5d66"/>
+      <stop offset="1" stop-color="#0a0a0c"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<main id="main">
+
+<!-- ================= MAIN MENU ================= -->
+<section id="menu" class="screen active" aria-label="Main menu">
+
+  <picture class="hero"><source type="image/webp" srcset="emblem.webp"><img src="emblem.png" alt="" width="480" height="409" decoding="async"></picture>
+  <h1>CrowniX</h1>
+  <p class="sub">Luxury International Checkers</p>
+
+  <button id="playNow" class="play-now" data-act="playnow" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg>
+    <span class="pn-text"><strong>Play Now</strong><small id="playNowSub">vs Casual</small></span>
+  </button>
+
+  <div id="levelSeg" class="seg" role="radiogroup" aria-label="Computer level"><button type="button" role="radio" aria-checked="false" data-level="beginner" aria-label="Beginner" title="Beginner"><span class="pips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg></span></button><button type="button" role="radio" aria-checked="false" data-level="casual" aria-label="Casual" title="Casual"><span class="pips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg></span></button><button type="button" role="radio" aria-checked="false" data-level="competitive" aria-label="Competitive" title="Competitive"><span class="pips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg></span></button><button type="button" role="radio" aria-checked="false" data-level="master" aria-label="Master" title="Master"><span class="pips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg></span></button></div>
+
+  <nav class="menu-grid" aria-label="More options">
+    <button class="icon-btn menu-btn" id="resume" hidden data-act="resume" type="button" aria-label="Resume saved game" title="Resume saved game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg><span class="btn-label">Resume</span></button>
+    <button class="icon-btn menu-btn" data-act="local" type="button" aria-label="Play a local two-player game" title="Play a local two-player game"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3.5 19c.5-3.2 2.3-5 5.5-5s5 1.8 5.5 5"/><path d="M14.5 14.5c2.8-.7 5.2 1 6 4.5"/></svg><span class="btn-label">Duo</span></button>
+    <button class="icon-btn menu-btn" data-act="daily" type="button" aria-label="Daily Crown challenge" title="Daily Crown challenge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 17l1-3 3 2 3-2 1 3z"/></svg><span class="btn-label">Daily Crown</span><span id="dailyBadge" class="badge">New</span></button>
+    <button class="icon-btn menu-btn" data-act="replays" type="button" aria-label="Saved replays" title="Saved replays"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg><span class="btn-label">Replays</span></button>
+    <button class="icon-btn menu-btn" data-act="profile" type="button" aria-label="Profile, rating and achievements" title="Profile, rating and achievements"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span class="btn-label">Profile</span></button>
+    <button class="icon-btn menu-btn" data-act="how" type="button" aria-label="How to play" title="How to play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.4 2.4 0 1 1 4.3 1.5c-.8 1-2 1.3-2 2.8"/><path d="M12 16.8h.01"/></svg><span class="btn-label">Help</span></button>
+    <button class="icon-btn menu-btn" data-act="settings" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6z"/><path d="M19.4 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.3.9a8.4 8.4 0 0 0-2.6-1.5L14.2 2h-4l-.4 2.9a8.4 8.4 0 0 0-2.6 1.5l-2.3-.9-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.3-.9a8.4 8.4 0 0 0 2.6 1.5l.4 2.9h4l.4-2.9a8.4 8.4 0 0 0 2.6-1.5l2.3.9 2-3.4z"/></svg><span class="btn-label">Settings</span></button>
+    <button class="icon-btn menu-btn" id="install" hidden data-act="install" type="button" aria-label="Install CrowniX as an app" title="Install CrowniX as an app"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg><span class="btn-label">Install</span></button>
+  </nav>
+
+</section>
+
+<!-- ================= GAME ================= -->
+<section id="game" class="screen" aria-label="Game">
+<div class="gwrap">
+
+  <div class="boardcol">
+
+    <div class="bhead">
+      <button id="themeBtn" class="top-icon-btn" data-act="theme" type="button" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+        <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.7 8.7 0 1 0 20 15.5z"/></svg>
+      </button>
+
+      <div class="hmid" role="status" aria-live="polite">
+        <div id="turn" class="turn"></div>
+        <div id="sub" class="subturn"></div>
+      </div>
+
+      <button id="snd" class="top-icon-btn" data-act="snd" type="button" aria-label="Sound on. Press to mute" aria-pressed="true" title="Sound on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M3 9.5v5h4l5 4v-13l-5 4z"/><path class="wv" d="M15.5 8.7a4.8 4.8 0 0 1 0 6.6M18.2 6a8.4 8.4 0 0 1 0 12"/><path class="x" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+      </button>
+    </div>
+
+    <div class="frame">
+      <div id="board" class="board coords" tabindex="0" role="grid" aria-label="Draughts board. Arrow keys move, Enter selects."></div>
+      <div id="pause" class="pause" hidden aria-live="polite"><span>PAUSED</span></div>
+    </div>
+
+    <!-- Hint and "Why this move?" -->
+    <div id="insight" class="insight" hidden>
+      <div class="insight-head">
+        <strong id="insightTitle"></strong>
+        <button id="whyBtn" type="button" class="why-btn" data-act="why" hidden>Why?</button>
+        <button type="button" class="insight-x" data-act="insightClose" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <ul id="insightBody" class="insight-body" hidden></ul>
+    </div>
+
+    <!-- Replay controls -->
+    <div id="replayBar" class="replay-bar" role="group" aria-label="Replay controls" hidden>
+      <div id="replayInfo" class="replay-info" aria-live="off"></div>
+      <div class="replay-btns">
+        <button type="button" class="rbtn" data-act="replayFirst" aria-label="First move" title="First move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14"/><path d="M18 6l-8 6 8 6z"/></svg></button>
+        <button type="button" class="rbtn" data-act="replayPrev" aria-label="Previous move" title="Previous move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6l-8 6 8 6z"/></svg></button>
+        <button type="button" class="rbtn rplay" data-act="replayPlay" aria-label="Play replay" title="Play replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="replayPlayIcon" d="M8 5.5v13l10-6.5z"/></svg></button>
+        <button type="button" class="rbtn" data-act="replayNext" aria-label="Next move" title="Next move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6l8 6-8 6z"/></svg></button>
+        <button type="button" class="rbtn" data-act="replayLast" aria-label="Last move" title="Last move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14"/><path d="M6 6l8 6-8 6z"/></svg></button>
+        <button type="button" class="rbtn rspeed" data-act="replaySpeed" aria-label="Replay speed" title="Replay speed"><span id="replaySpeedLabel">1x</span></button>
+        <button type="button" class="rbtn" data-act="share" aria-label="Share this game" title="Share this game"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg></button>
+        <button type="button" class="rbtn" data-act="replayExit" aria-label="Close replay" title="Close replay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+
+  </div>
+
+  <aside class="side" aria-label="Game information">
+
+    <div class="stats">
+      <div aria-label="White pieces"><i class="mini w" aria-hidden="true"></i><b id="wc">12</b></div>
+      <div aria-label="Black pieces"><i class="mini b" aria-hidden="true"></i><b id="bc">12</b></div>
+      <div aria-label="Time"><svg class="mini-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b id="tm">00:00</b></div>
+    </div>
+
+    <div class="ctl" aria-label="Game controls">
+      <button class="icon-btn game-btn" data-act="undo" type="button" aria-label="Undo last move" title="Undo last move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H4v5"/><path d="M4 12c2-5 8-7 12-4 3 2 4 6 3 9"/></svg><span class="btn-label">Undo</span></button>
+      <button class="icon-btn game-btn" data-act="redo" type="button" aria-label="Redo move" title="Redo move"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7h5v5"/><path d="M20 12c-2-5-8-7-12-4-3 2-4 6-3 9"/></svg><span class="btn-label">Redo</span></button>
+      <button class="icon-btn game-btn" data-act="hint" type="button" aria-label="Show a hint (makes the game unrated)" title="Show a hint (makes the game unrated)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><span class="btn-label">Hint</span></button>
+      <button class="icon-btn game-btn" id="pbtn" data-act="pause" type="button" aria-label="Pause game" title="Pause game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span class="btn-label">Pause</span></button>
+      <button class="icon-btn game-btn" data-act="history" type="button" aria-label="Move history and replay" title="Move history and replay"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="btn-label">History</span></button>
+      <button class="icon-btn game-btn" data-act="new" type="button" aria-label="New game" title="New game"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 9"/><path d="M3 4v5h5"/><path d="M4 13a8 8 0 0 0 14.8 4L21 15"/><path d="M21 20v-5h-5"/></svg><span class="btn-label">New</span></button>
+      <button class="icon-btn game-btn" data-act="share" type="button" aria-label="Share this game" title="Share this game"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="btn-label">Share</span></button>
+      <button class="icon-btn game-btn" id="vbtn" data-act="vibe" type="button" aria-label="Vibration on" title="Vibration on" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="5" width="8" height="14" rx="2"/><path d="M5 8v8M2.5 10v4M19 8v8M21.5 10v4"/></svg><span class="btn-label">Vibration</span></button>
+      <button class="icon-btn game-btn" data-act="settings" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6z"/><path d="M19.4 13.5a7.8 7.8 0 0 0 0-3l2-1.5-2-3.4-2.3.9a8.4 8.4 0 0 0-2.6-1.5L14.2 2h-4l-.4 2.9a8.4 8.4 0 0 0-2.6 1.5l-2.3-.9-2 3.4 2 1.5a7.8 7.8 0 0 0 0 3l-2 1.5 2 3.4 2.3-.9a8.4 8.4 0 0 0 2.6 1.5l.4 2.9h4l.4-2.9a8.4 8.4 0 0 0 2.6-1.5l2.3.9 2-3.4z"/></svg><span class="btn-label">Settings</span></button>
+      <button class="icon-btn game-btn" data-act="exit" type="button" aria-label="Exit to menu" title="Exit to menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H5v14h5"/><path d="M13 8l4 4-4 4"/><path d="M17 12H8"/></svg><span class="btn-label">Exit</span></button>
+    </div>
+
+    <div class="movelist-wrap">
+      <h3 class="movelist-title">Moves</h3>
+      <ol id="moveList" class="movelist" aria-label="Move list"></ol>
+    </div>
+
+  </aside>
+
+</div>
+</section>
+
+<!-- ================= HOW TO PLAY ================= -->
+<section id="how" class="screen doc" aria-label="How to play">
+<h2>How to Play</h2>
+<div class="card rules">
+  <ul>
+    <li><b>Move</b> One square, diagonally forward.</li>
+    <li><b>Capture</b> Jump forward. Forced, longest chain first.</li>
+    <li><b>Chain</b> Keep jumping with the same piece.</li>
+    <li><b>King</b> Reach the far row. Kings fly, both ways.</li>
+    <li><b>Win</b> Take or block every enemy piece.</li>
+    <li><b>Draw</b> Same position 3 times, or 40 quiet king moves.</li>
+    <li><b>Hint / Undo</b> make a game unrated.</li>
+  </ul>
+  <pre>K . . . X . . .
+K jumps X and lands
+on any empty square past it.</pre>
+</div>
+<button class="icon-btn doc-btn" data-act="keys" type="button" aria-label="Keyboard shortcuts" title="Keyboard shortcuts"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg><span class="btn-label">Keyboard shortcuts</span></button>
+<button class="icon-btn doc-btn" data-act="back" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg><span class="btn-label">Back</span></button>
+</section>
+
+<!-- ================= SETTINGS ================= -->
+<section id="settings" class="screen doc" aria-label="Settings">
+<h2>Settings</h2>
+<div class="card" id="setlist">
+  <label><span>Sound</span><input type="checkbox" data-set="sound"></label>
+  <label><span>Vibration</span><input type="checkbox" data-set="vib"></label>
+  <label><span>Animation</span><select data-set="animMode"><option value="cinematic">Cinematic</option><option value="fast">Fast</option><option value="off">Off</option></select></label>
+  <label><span>Game timer</span><input type="checkbox" data-set="timer"></label>
+  <label><span>Coordinates</span><input type="checkbox" data-set="coords"></label>
+  <label><span>Confirm restart</span><input type="checkbox" data-set="confirm"></label>
+  <label><span>Auto-select</span><input type="checkbox" data-set="autoSelect"></label>
+  <label><span>Show reasoning</span><input type="checkbox" data-set="reasoning"></label>
+  <label><span>Theme</span><select data-set="theme"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+  <label><span>Level</span><select data-set="diff"><option value="beginner">Beginner</option><option value="casual">Casual</option><option value="competitive">Competitive</option><option value="master">Master</option></select></label>
+</div>
+<button class="icon-btn doc-btn" data-act="back" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg><span class="btn-label">Back</span></button>
+</section>
+
+<!-- ================= PROFILE ================= -->
+<section id="profile" class="screen doc" aria-label="Profile">
+<h2>Profile</h2>
+<div id="profileBody" class="profile-body"></div>
+<button class="icon-btn doc-btn" data-act="resetProfile" type="button" aria-label="Erase profile data" title="Erase profile data"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg><span class="btn-label">Reset data</span></button>
+<button class="icon-btn doc-btn" data-act="back" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg><span class="btn-label">Back</span></button>
+</section>
+
+<!-- ================= DAILY CROWN ================= -->
+<section id="daily" class="screen doc" aria-label="Daily Crown">
+<h2>Daily Crown</h2>
+<div class="card daily-card">
+  <p class="muted" id="dailyDate"></p>
+  <h3 id="dailyTitle"></h3>
+  <p id="dailyDesc" class="chip-line"></p>
+  <p id="dailyStatus" class="muted"></p>
+  <p class="streak-line"><strong>Streak:</strong> <span id="dailyStreak"></span></p>
+  <ul id="dailyWeek" class="week" aria-label="Last seven days"></ul>
+</div>
+<button id="dailyPlay" class="play-now small" data-act="dailyPlay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg><span class="pn-text"><strong>Play today's challenge</strong></span></button>
+<button id="dailyShare" class="icon-btn doc-btn" data-act="dailyShare" type="button" hidden aria-label="Share result" title="Share result"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="btn-label">Share result</span></button>
+<button class="icon-btn doc-btn" data-act="back" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg><span class="btn-label">Back</span></button>
+</section>
+
+<!-- ================= REPLAYS ================= -->
+<section id="replays" class="screen doc" aria-label="Saved replays">
+<h2>Replays</h2>
+<div class="card">
+  <p id="replayEmpty" class="muted">No games yet.</p>
+  <ul id="replayList" class="replay-list"></ul>
+</div>
+<button class="icon-btn doc-btn" data-act="back" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg><span class="btn-label">Back</span></button>
+</section>
+
+</main>
+
+<!-- ================= GAME OVER ================= -->
+<div id="over" class="modal" role="dialog" aria-modal="true" aria-labelledby="ot" hidden>
+  <div class="mbox">
+    <h2 id="ot">VICTORY</h2>
+    <p id="od"></p>
+    <p id="od2" class="muted"></p>
+    <button class="icon-btn modal-btn" data-act="again" type="button" aria-label="Play again" title="Play again"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.8-4L3 9"/><path d="M3 4v5h5"/><path d="M4 13a8 8 0 0 0 14.8 4L21 15"/><path d="M21 20v-5h-5"/></svg><span class="btn-label">Play Again</span></button>
+    <button class="icon-btn modal-btn" data-act="replayEnded" type="button" aria-label="Replay this game" title="Replay this game"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg><span class="btn-label">Replay</span></button>
+    <button class="icon-btn modal-btn" data-act="shareEnded" type="button" aria-label="Share this game" title="Share this game"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="btn-label">Share</span></button>
+    <button class="icon-btn modal-btn" data-act="exit" type="button" aria-label="Main menu" title="Main menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H5v14h5"/><path d="M13 8l4 4-4 4"/><path d="M17 12H8"/></svg><span class="btn-label">Menu</span></button>
+  </div>
+</div>
+
+<!-- ================= WELCOME ================= -->
+<div id="welcome" class="modal" role="dialog" aria-modal="true" aria-labelledby="wt" hidden>
+  <div class="mbox welcome">
+    <h2 id="wt">CrowniX</h2>
+    <ul class="steps">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 2-3 6z"/></svg><span>Tap a piece, then a gold square</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l6-6M14 10l6-6M10 14l4-4"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="8" r="2"/></svg><span>Captures are forced</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l-1-10 5 4 5-8 5 8 5-4-1 10z"/></svg><span>Reach the far row: crown a king</span></li>
+    </ul>
+    <button class="play-now small" data-first data-act="welcomePlay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg><span class="pn-text"><strong>Play Now</strong></span></button>
+    <button class="link-btn" data-act="welcomeSkip" type="button">Skip</button>
+  </div>
+</div>
+
+<!-- ================= KEYBOARD SHORTCUTS ================= -->
+<div id="keys" class="modal" role="dialog" aria-modal="true" aria-labelledby="kt" hidden>
+  <div class="mbox keys">
+    <h2 id="kt">Keyboard shortcuts</h2>
+    <table class="data-table keys-table">
+      <tr><th scope="row">Arrow keys</th><td>Move around the board</td></tr>
+      <tr><th scope="row">Enter / Space</th><td>Select a piece or square</td></tr>
+      <tr><th scope="row">Esc</th><td>Deselect, close, go back</td></tr>
+      <tr><th scope="row">U / R</th><td>Undo / redo</td></tr>
+      <tr><th scope="row">H</th><td>Hint</td></tr>
+      <tr><th scope="row">P</th><td>Pause</td></tr>
+      <tr><th scope="row">M / T</th><td>Mute / theme</td></tr>
+      <tr><th scope="row">B</th><td>Focus the board</td></tr>
+      <tr><th scope="row">Replay: ← → Home End Space</th><td>Step, jump, play</td></tr>
+      <tr><th scope="row">?</th><td>This list</td></tr>
+    </table>
+    <button class="icon-btn modal-btn" data-first data-act="closeKeys" type="button" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="btn-label">Close</span></button>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="announce" class="sr-only" aria-live="assertive"></div>
+
+<script src="engine.js"></script>
+<script src="core.js"></script>
+<script src="audio.js"></script>
+<script src="profile.js"></script>
+<script src="fx.js"></script>
+<script src="board.js"></script>
+<script src="game.js"></script>
+<script src="screens.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
